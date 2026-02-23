@@ -4,7 +4,9 @@
     .fingerprint = 0x37aa6e18b9d7de34,
     .minimum_zig_version = "0.15.2",
 
-    .dependencies = .{},
+    .dependencies = .{
+        .libusb_zig_internals = .{ .path = "./internals" },
+    },
 
     .paths = .{
         "build.zig",

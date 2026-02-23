@@ -4,21 +4,16 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const libusb_zig_internals = b.dependency("libusb_zig_internals", .{});
-
     // Create root module
-    const mod = b.addModule("libusb_zig", .{
+    const mod = b.addModule("libusb_zig_internals", .{
         .root_source_file = b.path("src/root.zig"),
         .target = target,
         .optimize = optimize,
-        .imports = &.{
-            .{ .name = "internals", .module = libusb_zig_internals.module("libusb_zig_internals") },
-        },
     });
 
     // Create a artifact
     const lib = b.addLibrary(.{
-        .name = "libusb_zig",
+        .name = "libusb_zig_internals",
         .root_module = mod,
         .linkage = .static,
     });
